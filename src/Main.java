@@ -4,83 +4,116 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
-        Resume resume1 = new Resume();
+//        Resume resume1 = new Resume(); //jobs
+        Resume resume2 = new Resume(); //intro
+        Resume dates1 = new Resume(); // Start Dates
+        Resume dates2 = new Resume(); // End Dates
+        ArrayList<Resume> allJobs = new ArrayList<>();//jobs listing
+        String userInput = "";
         String name = "";
         String address = "";
+        String company = "";
+        String title = "";
+        String edate = "";
+        String sdate = "";
+        String description = "";
+        String danswer = "";
+        String danswer1 = "";
+        String danswer2 = "";
         System.out.println("We are creating a resume!");
+        ArrayList<Resume> intro = new ArrayList<>(); //Intro list
         System.out.println("Please provide your name: ");
         name = keyboard.nextLine();
-        resume1.setName(name);
+        resume2.setName(name);
+
         System.out.println("Please provide your email address: ");
         address = keyboard.nextLine();
-        resume1.setAddress(address);
-        System.out.println("Now we will enter information for your previous jobs: ");
-        ArrayList<String>sDates = new ArrayList<>();
-        ArrayList<Resume> allJobs = new ArrayList<>();
+        resume2.setAddress(address);
+        intro.add(resume2);
 
-        ArrayList<String>eDates = new ArrayList<>();
-        while(true){
-            ArrayList<String>Jobs = new ArrayList<>();
-            String company = "";
-            System.out.println("Please enter the name of your previous company: ");
+        int counter = 1;
+        ArrayList<Resume> sDates = new ArrayList<>();
+
+        ArrayList<Resume> eDates = new ArrayList<>();
+//        Jobs.add(resume1);
+        while (true){
+            counter = counter + 1;
+            Resume resume1 = new Resume();
+            System.out.println("Please provide your previous employer:");
+//            System.out.println("Job #" + counter + ":");
             company = keyboard.nextLine();
             resume1.setCompany(company);
-            Jobs.add(resume1);
 
-
-            System.out.println("Please enter your job title at that company: ");
-            String title = "";
+            System.out.println("Job title:");
             title = keyboard.nextLine();
             resume1.setTitle(title);
 
-            System.out.println("Please enter the date you started with the company: ");
-            int sdate = 0;
-            sdate = keyboard.nextInt();
-            keyboard.nextLine();
+            System.out.println("Start Date: ");
+            sdate = keyboard.nextLine();
             resume1.setSdate(sdate);
+            dates1.setSdate(sdate);
+            sDates.add(dates1);
 
-            System.out.println("Please enter your last date with the company: ");
-            int edate = 0;
-            edate = keyboard.nextInt();
-            keyboard.nextLine();
+
+            System.out.println("End Date: ");
+            edate = keyboard.nextLine();
             resume1.setEdate(edate);
+            dates2.setEdate(edate);
+            eDates.add(dates2);
 
-            System.out.println("Provide a job description: ");
-            String description = "";
+
+            while (true){
+            System.out.println("Job Description: ");
             description = keyboard.nextLine();
             resume1.setDescription(description);
+            allJobs.add(resume1);
 
-            System.out.println("Would you like to add another description? If yes, please provide it below. " +
-                    "If no, please type 'no' to continue.");
-            String danswer = "";
+
+            System.out.println("Do you want to add another job description? (y/n)");
             danswer = keyboard.nextLine();
-
-//            while(true){
-//                System.out.println("Please add another description: ");
-//                String danswer1 = "";
-//                danswer1 = keyboard.nextLine();
-//            }
-
-            if (danswer.equalsIgnoreCase("no")){
-                System.out.println("Do you want to enter another job (yes/no)?");
-
-                String noMoreJobs = "";
-                noMoreJobs = keyboard.nextLine();
-
-                if (noMoreJobs.equalsIgnoreCase("no")){
-                    System.out.println("You have completed your resume!");
-                    break;
-                }
+            if (danswer.equalsIgnoreCase("n")){
+                break;
+            }}
+            System.out.println("Do you want to add another job? (y/n).");
+            userInput = keyboard.nextLine();
+            if(userInput.equalsIgnoreCase("n")){
+                break;
             }
+
+//            counter = counter + 1;
+
         }
 
-        System.out.println("You have completed your resume!");
-        for ()
+        System.out.println("This is your resume: ");
+        System.out.println(resume2.getHeading());
+        for (Resume resume1 : allJobs){
+//            System.out.println("Job " + counter);
+            System.out.println(resume1.getJobs());
 
 
+//            counter += resume1;
+
+        }int size = allJobs.size();
+
+        int sum = 1;
+        for ( int i = 0; i <size; i++){
+            sum += i ;
+
+        }
+        System.out.println("You have listed " + sum + " jobs.");
 
 
-
-
+        }
     }
-}
+
+
+
+
+
+
+
+
+
+
+
+

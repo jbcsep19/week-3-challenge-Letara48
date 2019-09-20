@@ -3,14 +3,14 @@ public class Resume {
     private String address;
     private String company;
     private String title;
-    private int sdate;
-    private int edate;
+    private String sdate;
+    private String edate;
     private String description;
 
     public Resume() {
     }
 
-    public Resume(String name, String address, String company, String title, int sdate, int edate, String description) {
+    public Resume(String name, String address, String company, String title, String sdate, String edate, String description) {
         this.name = name;
         this.address = address;
         this.company = company;
@@ -52,19 +52,19 @@ public class Resume {
         this.title = title;
     }
 
-    public int getSdate() {
+    public String getSdate() {
         return sdate;
     }
 
-    public void setSdate(int sdate) {
+    public void setSdate(String sdate) {
         this.sdate = sdate;
     }
 
-    public int getEdate() {
+    public String getEdate() {
         return edate;
     }
 
-    public void setEdate(int edate) {
+    public void setEdate(String edate) {
         this.edate = edate;
     }
 
@@ -77,7 +77,12 @@ public class Resume {
     }
     public String getJobs(){
         String job = "";
-        job = "Company: " + getCompany() + "\nJob Title: " + getTitle() + "\nStart Date: " + "\nEnd Date: " + "\nJob Description: " + getDescription();
+        job = "Company: " + getCompany() + "\nJob Title: " + getTitle() + "\nStart Date: " + getSdate() + "\nEnd Date: "  + getEdate() + "\nJob Description: " + getDescription() + "\n";
         return job;
+    }
+    public String getHeading(){
+        String intro = "";
+        intro = "Name: " + getName() + "\nEmail Address: " + getAddress() + "\n";
+        return intro;
     }
 }
